@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hw1/styles/dimensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/news.dart';
 
@@ -20,11 +21,11 @@ class NewsDetailScreen extends StatelessWidget {
             if (news.urlToImage.isNotEmpty)
               Image.network(news.urlToImage),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(AppDimensions.small),
               child: Text(news.description),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(AppDimensions.small),
               child: Text(news.content),
             ),
           ],

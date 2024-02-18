@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hw1/styles/dimensions.dart';
 
 class LoadMoreButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -8,7 +9,7 @@ class LoadMoreButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: AppDimensions.small),
       width: double.infinity,
       child: ElevatedButton(
         onPressed: onPressed,
