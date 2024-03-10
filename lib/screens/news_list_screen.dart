@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hw1/models/favorite.dart';
 import 'package:hw1/models/news.dart';
 import 'package:hw1/services/api_service.dart';
 import 'package:hw1/widgets/load_more_button.dart';
 import 'package:hw1/widgets/news_tile.dart';
 
 class NewsListScreen extends StatefulWidget {
-  const NewsListScreen({super.key});
+  final FavoriteNewsModel favoriteNewsModel;
+
+  const NewsListScreen({super.key, required this.favoriteNewsModel});
 
   @override
   NewsListScreenState createState() => NewsListScreenState();
@@ -27,7 +30,8 @@ class NewsListScreenState extends State<NewsListScreen> {
     setState(() {
       _isLoading = true;
     });
-    final List<News> newsList = await _apiService.fetchTopHeadlines(page: _currentPage);
+    final List<News> newsList =
+        await _apiService.fetchTopHeadlines(page: _currentPage);
     setState(() {
       _newsList.addAll(newsList);
       _isLoading = false;
@@ -49,9 +53,11 @@ class NewsListScreenState extends State<NewsListScreen> {
               itemBuilder: (context, index) {
                 if (index < _newsList.length) {
                   final news = _newsList[index];
-                  return NewsTile(news: news);
+                  return NewsTile(
+                      news: news, favoriteNewsModel: widget.favoriteNewsModel);
                 } else {
-                  return LoadMoreButton(onPressed: _isLoading ? null : _loadMoreNews);
+                  return LoadMoreButton(
+                      onPressed: _isLoading ? null : _loadMoreNews);
                 }
               },
             ),

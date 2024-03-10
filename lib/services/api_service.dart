@@ -7,7 +7,8 @@ class ApiService {
   final String _baseUrl = "https://newsapi.org/v2/top-headlines";
   final String _apiKey = dotenv.env['NEWS_API_KEY']!;
 
-  Future<List<News>> fetchTopHeadlines({String country = 'us', int page = 1, int pageSize = 10}) async {
+  Future<List<News>> fetchTopHeadlines(
+      {String country = 'us', int page = 1, int pageSize = 10}) async {
     final response = await http.get(
       Uri.parse('$_baseUrl?country=$country&page=$page&pageSize=$pageSize'),
       headers: {'X-Api-Key': _apiKey},

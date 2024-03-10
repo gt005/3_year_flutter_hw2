@@ -25,4 +25,15 @@ class News {
       articleUrl: json['url'] ?? '',
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'description': description,
+      'content': content,
+      'publishedAt': publishedAt,
+      'urlToImage': urlToImage,
+      'articleUrl': articleUrl,
+    };
+  }
 }
